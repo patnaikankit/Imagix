@@ -4,8 +4,10 @@ import { config as conf } from "dotenv";
 import Joi from "joi";
 import path from "path";
 import EnvConfig from "../types/EnvConfig";
+import { OpenAI } from "openai";
+import { v2 as cloudinarySetup } from "cloudinary";
 
-conf({path: path.join(__dirname + "../../.env")});
+conf({path: path.join(__dirname, "../../.env")});
 
 // defining joi schema for validating the data the passed in env file along with custom messages if any of the following data is missing 
 const envVarSchema = Joi.object()
@@ -35,3 +37,28 @@ export const config: EnvConfig = {
         apiSecret: envVars.CLOUDINARY_API_SECRET
     },
 };
+
+
+// wrapping the validated data in a function for ease of use
+export const validateEnv = (): void => {
+    const { error } = envVarSchema.prefs({errors: {label: "key"}}).validate(process.env);
+    if(error){
+        throw new Error(`ENV SETUP Error ${error.message}`);
+    }    
+}
+
+
+// OpenAI configuration
+export const gpt = new OpenAI({
+    apiKey: config.gptKey,
+});
+
+
+// Cloudinary configuration
+cloudinarySetup.config({
+    cloud_name: config.cloudinary.name,
+    api_key: config.cloudinary.apiKey,
+    api_secret: config.cloudinary.apiSecret,
+});
+
+export const cloudinary = cloudinarySetup;
