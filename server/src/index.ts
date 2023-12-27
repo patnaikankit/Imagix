@@ -2,6 +2,7 @@ import express, { Application, Express, Request, Response } from "express";
 import { validateEnv } from "./config/config";
 import { dbConnect } from "./config/db";
 import cors from "cors";
+import { generateImage } from "./controllers/image.controller";
 
 const app: Application = express();
 const port: number = 4000;
@@ -16,6 +17,8 @@ dbConnect();
 app.use(express.json());
 
 app.use(cors());
+
+app.use("/api/image", generateImage)
 
 app.get('/test', (req: Request, res: Response) => {
     res.send("Server is running!")
