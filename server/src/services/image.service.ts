@@ -1,4 +1,4 @@
-// the logic to retrieve all the genearted images and to store the a new generated image 
+// the functions to get all the genearted images and to store a new generated image 
 import imageModel from "../models/image.model" 
 import { imageInput, imageOuput } from "../types/image";
 
