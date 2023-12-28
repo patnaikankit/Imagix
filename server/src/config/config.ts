@@ -4,7 +4,7 @@ import { config as conf } from "dotenv";
 import Joi from "joi";
 import path from "path";
 import EnvConfig from "../types/EnvConfig";
-import { OpenAI } from "openai";
+import { Configuration, OpenAIApi } from "openai";
 import { v2 as cloudinarySetup } from "cloudinary";
 
 conf({path: path.join(__dirname, "../../.env")});
@@ -49,9 +49,11 @@ export const validateEnv = (): void => {
 
 
 // OpenAI configuration
-export const gpt = new OpenAI({
+const configuration = new Configuration({
     apiKey: config.gptKey,
 });
+  
+export const gpt = new OpenAIApi(configuration);
 
 
 // Cloudinary configuration

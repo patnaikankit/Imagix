@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { createImage, fetchAllImages } from "../services/image.service";
 import ResponseHandler from "../utils/responseHandler.util";
-import CreateImageRequestSizeEnum from "openai";
+import { CreateImageRequestSizeEnum } from "openai";
 import { cloudinary, gpt } from "../config/config";
 
 
@@ -23,8 +23,9 @@ export const getAllImages = async (req: Request, res: Response): Promise<void> =
 export const generateImage = async (req: Request, res: Response): Promise<void> => {
     const { prompt, size } = req.body;
 
-    if(!prompt || prompt === ""){
+    if (!prompt || prompt === ""){
         ResponseHandler.BadRequest(res, "", "Prompt is Required!");
+        return;
     }
 
     let imageSize;
@@ -45,12 +46,17 @@ export const generateImage = async (req: Request, res: Response): Promise<void> 
     }
 
     try{
-        const response = await gpt.cre.
+        const response = await gpt.createImage({
+            prompt,
+            n: 1,
+            size: imageSize,
+          });
 
         const image = response.data.data[0].url;
 
         if(!image){
             ResponseHandler.ServerError(res, "",  "Something went wrong while generating image");
+            return ;
         }
 
         // uploading the image to cloudinary
@@ -64,8 +70,10 @@ export const generateImage = async (req: Request, res: Response): Promise<void> 
         });
 
         ResponseHandler.created(res, {imageUrl});
+        return ;
     }
     catch(error: unknown){
-        ResponseHandler.ServerError(res, error);
+        const castedError = error as Error;
+        ResponseHandler.ServerError(res, castedError)
     }
 }
