@@ -1,4 +1,4 @@
-export const IMAGE_SIZES = [
+export const Image_Size = [
     {
       label: "Small (256 X 256)",
       value: "Small",

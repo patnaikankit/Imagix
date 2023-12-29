@@ -6,7 +6,7 @@ const Header = () => {
         <nav className="bg-white border-gray-200 px-4 lg:px-6 py-3">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <h1 className="animate-text text-center bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-5xl sm:7xl font-black">
-            Imagix
+            IMAGIX
           </h1>
           <div className="flex items-center lg:order-2 gap-x-3">
             <a href="" className="ml-4 hidden sm:block">
