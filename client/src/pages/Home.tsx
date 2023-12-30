@@ -127,10 +127,10 @@ const Home = () => {
 
         <div className="mb-16"></div>
 
-        {/* <GeneratedImageModal
-            dialogState={imageModalState}
-            setDialogState={setImageModalState}
-      /> */}
+        <GeneratedImageModal
+            dialogState={imageModal}
+            setDialogState={setImageModal}
+      />
     </div>
   )
 }

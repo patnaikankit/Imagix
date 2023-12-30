@@ -4,7 +4,7 @@ import axios from "../utils/axios";
 // for generating an image
 const generateImage = async (data: { prompt: string; size: string }) => {
     try{
-        const response = axios.post("/image/generate", data);
+        const response = await axios.post("/image/generate", data);
         return response;
     }
     catch(error){
