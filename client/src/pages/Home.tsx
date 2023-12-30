@@ -8,6 +8,7 @@ import classNames from "classnames";
 import { getSurprisePrompt } from "../utils";
 import Explore from "../components/Explore";
 import GeneratedImageModal from "../components/GeneratedImageModal";
+import ErrorModal from "../components/ErrorModal";
 
 
 const Home = () => {
@@ -131,6 +132,8 @@ const Home = () => {
             dialogState={imageModal}
             setDialogState={setImageModal}
       />
+
+        <ErrorModal open={errorModal} setIsOpen={setErrorModal} />
     </div>
   )
 }
