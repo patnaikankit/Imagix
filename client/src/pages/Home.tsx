@@ -5,6 +5,10 @@ import { Image_Size } from "../ImageSize/ImageSize";
 import { ImageModalState } from "../types/type";
 import imageService from "../services/image.service";
 import classNames from "classnames";
+import { getSurprisePrompt } from "../utils";
+import Explore from "../components/Explore";
+import GeneratedImageModal from "../components/GeneratedImageModal";
+
 
 const Home = () => {
     // State Change 
@@ -68,8 +72,7 @@ const Home = () => {
             </h1>
 
             <p className="text-center">
-                Unleash your creativity using our platform and experience the
-                awe-inspiring capabilities of computer-generated imagery!
+                Tap into your creative genius with our platform and be amazed by the sheer magic of computer-generated imagery! Transform your ideas into reality, whether it's an otherworldly adventure or a visual feast of colors and shapes.
             </p>
 
             <div className="max-w-screen-xl mt-10 mx-auto">
@@ -114,11 +117,20 @@ const Home = () => {
                         setPrompt(getSurprisePrompt(prompt));
                     }}
                     >
-                    Surprise Me
+                        Surprise Me
                     </button>
                 </div>
             </div>
         </div>
+
+        <Explore setImageModalState={setImageModal} />
+
+        <div className="mb-16"></div>
+
+        {/* <GeneratedImageModal
+            dialogState={imageModalState}
+            setDialogState={setImageModalState}
+      /> */}
     </div>
   )
 }
