@@ -9,7 +9,7 @@ const Header = () => {
             IMAGIX
           </h1>
           <div className="flex items-center lg:order-2 gap-x-3">
-            <a href="" className="ml-4 hidden sm:block">
+            <a href="https://github.com/patnaikankit/Imagix" className="ml-4 hidden sm:block">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

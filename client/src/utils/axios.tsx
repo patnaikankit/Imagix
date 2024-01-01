@@ -1,6 +1,6 @@
 import axiosLib from "axios";
 
-const baseURL = "http://localhost:5173/api";
+const baseURL = "http://localhost:4000/api";
 
 const axios = axiosLib.create({baseURL});
 
