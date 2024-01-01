@@ -28,7 +28,7 @@ export default {
         text: {
           "0%, 100%": {
             "background-size": "200% 200%",
-            "baclground-position": "left center",
+            "background-position": "left center",
           },
           "50%": {
             "background-size": "200% 200%",
