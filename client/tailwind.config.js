@@ -32,7 +32,7 @@ export default {
           },
           "50%": {
             "background-size": "200% 200%",
-            "baclground-position": "right center",
+            "background-position": "right center",
           },
         },
       },
