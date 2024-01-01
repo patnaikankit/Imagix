@@ -1,6 +1,6 @@
 import axiosLib from "axios";
 
-const baseURL = "http://localhost:4000/api";
+const baseURL = "https://imagix.onrender.com/api";
 
 const axios = axiosLib.create({baseURL});
 
